@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "tJ2Hy6yvbiiyaONqPy89e"
+uri = "file://artifacts/portfolio/public/hero-bg.png"
+type = "image"
+title = "Dark futuristic cinematic developer portrait"
+
+[[generated]]
+id = "mYFr62LwlG4_VTdU0-mN6"
+uri = "file://artifacts/portfolio/public/avatar.png"
+type = "image"
+title = "Futuristic developer avatar"
+
+[[generated]]
+id = "Io6jtPB9RpK7YbTGbC3Yl"
+uri = "file://artifacts/portfolio/public/about-bg.png"
+type = "image"
+title = "Futuristic coding workspace"

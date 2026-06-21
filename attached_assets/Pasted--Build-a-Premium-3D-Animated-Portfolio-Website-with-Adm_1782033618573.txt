@@ -1,0 +1,421 @@
+
+
+# Build a Premium 3D Animated Portfolio Website with Admin Dashboard
+
+Create a **world-class, production-ready, fully responsive portfolio website** with a separate **Admin Dashboard** where every piece of content can be edited without touching code.
+
+## Core Requirements
+
+Build using the latest modern stack:
+
+### Frontend
+
+* Next.js 15 (App Router)
+* React 19
+* TypeScript
+* Tailwind CSS
+* Shadcn/UI
+* Framer Motion
+* GSAP
+* Three.js
+* React Three Fiber
+* Drei
+* Lenis Smooth Scroll
+* Lucide Icons
+* React Hook Form
+* Zod Validation
+
+### Backend
+
+* Next.js Server Actions
+* REST API Routes
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+* Role-Based Access Control
+
+### Authentication
+
+* Google OAuth Login
+* Email/Password Login
+* Forgot Password
+* Secure Session Management
+* Admin Role
+* User Role
+
+### Deployment
+
+* Vercel Ready
+* Environment Variables
+* Production Optimized
+* SEO Optimized
+
+---
+
+# Design Requirements
+
+The website must look like an award-winning website from:
+
+* Awwwards
+* Framer Showcase
+* Apple
+* Stripe
+* Linear
+* Vercel
+
+### Theme
+
+Dark futuristic design with:
+
+* Glassmorphism
+* Neumorphism
+* 3D Effects
+* Floating Elements
+* Gradient Lighting
+* Particle Effects
+* Mouse Interactions
+* Dynamic Shadows
+* Animated Backgrounds
+* Modern Typography
+
+### Animations
+
+Every section must have animations.
+
+Every text should have:
+
+* Letter-by-letter reveal
+* Scroll-triggered animation
+* Fade In
+* Slide In
+* Stagger Effect
+
+Page transitions:
+
+* Smooth transitions
+* Loading screen
+* Progress indicator
+
+Scrolling:
+
+* Smooth scrolling
+* Parallax effects
+* Scroll progress bar
+
+Buttons:
+
+* Hover glow effects
+* Magnetic button effects
+* Ripple effects
+
+Cards:
+
+* 3D tilt effects
+* Hover transforms
+* Depth shadows
+
+---
+
+# Pages
+
+## Home Page
+
+Hero Section:
+
+* Large animated name
+* Professional title
+* Short introduction
+* CTA buttons
+* 3D animated background
+* Particle system
+* Mouse reactive objects
+
+Sections:
+
+* Hero
+* About
+* Skills
+* Services
+* Projects
+* Experience
+* Education
+* Testimonials
+* Achievements
+* Blog Preview
+* Contact
+* Footer
+
+---
+
+## About Page
+
+Editable:
+
+* Profile image
+* Biography
+* Personal information
+* Timeline
+* Achievements
+* Statistics
+
+Animated counters.
+
+---
+
+## Skills Page
+
+Editable skills.
+
+Display:
+
+* Progress bars
+* Circular progress indicators
+* Animated charts
+* Category grouping
+
+---
+
+## Projects Page
+
+Project Management System
+
+Each project contains:
+
+* Title
+* Description
+* Technologies
+* GitHub Link
+* Live Link
+* Images
+* Videos
+* Category
+* Featured Toggle
+
+Filtering:
+
+* Search
+* Categories
+* Tags
+
+Animations:
+
+* 3D cards
+* Hover previews
+
+---
+
+## Services Page
+
+Editable services.
+
+Each service:
+
+* Icon
+* Title
+* Description
+* Pricing
+* Features
+
+---
+
+## Experience Page
+
+Editable timeline.
+
+Contains:
+
+* Company
+* Position
+* Duration
+* Description
+
+---
+
+## Education Page
+
+Editable education records.
+
+---
+
+## Blog System
+
+Full Blog CMS
+
+Features:
+
+* Rich Text Editor
+* Markdown Support
+* Categories
+* Tags
+* SEO Fields
+* Featured Image
+* Comments
+
+---
+
+## Contact Page
+
+Contact Form
+
+Features:
+
+* Validation
+* Email Notifications
+* Google Maps
+* Social Links
+
+---
+
+# Admin Dashboard
+
+Admin panel should be modern and beautiful.
+
+Features:
+
+### Dashboard Overview
+
+* Analytics Cards
+* Traffic Stats
+* Visitor Count
+* Contact Requests
+* Recent Activity
+
+### Content Management
+
+CRUD functionality for:
+
+* Hero Section
+* About Section
+* Skills
+* Services
+* Projects
+* Experience
+* Education
+* Testimonials
+* Blog Posts
+* Contact Information
+* Social Links
+* SEO Settings
+
+Everything must be editable.
+
+No hardcoded content.
+
+---
+
+# Media Management
+
+Upload:
+
+* Images
+* Videos
+* PDFs
+* Documents
+
+Features:
+
+* Drag and Drop
+* Preview
+* Delete
+* Replace
+
+Use:
+
+* Cloudinary
+  or
+* UploadThing
+
+---
+
+# SEO Features
+
+* Dynamic Metadata
+* Open Graph
+* Twitter Cards
+* Sitemap
+* Robots.txt
+* Structured Data
+* Canonical URLs
+
+---
+
+# Performance
+
+Target:
+
+* Lighthouse Score 95+
+* SEO 100
+* Accessibility 100
+* Performance 95+
+
+Implement:
+
+* Image Optimization
+* Lazy Loading
+* Code Splitting
+* Dynamic Imports
+* Server Components
+
+---
+
+# Security
+
+* JWT Authentication
+* Password Hashing
+* CSRF Protection
+* Input Sanitization
+* Rate Limiting
+* Secure Headers
+
+---
+
+# Database Schema
+
+Create MongoDB schemas for:
+
+* Users
+* Hero
+* About
+* Skills
+* Services
+* Projects
+* Experience
+* Education
+* Testimonials
+* Blog Posts
+* Contact Messages
+* Site Settings
+
+---
+
+# Additional Premium Features
+
+* Dark/Light Mode
+* Command Menu (Ctrl + K)
+* Multi-language Support
+* Download Resume Button
+* Visitor Analytics
+* Newsletter System
+* Toast Notifications
+* Search Functionality
+* Loading Skeletons
+* Error Boundaries
+* PWA Support
+
+---
+
+# Code Requirements
+
+* Clean Architecture
+* Reusable Components
+* TypeScript Everywhere
+* Modular Folder Structure
+* Production Ready
+* Fully Responsive
+* Mobile First
+* Well Commented
+
+Generate the complete project structure, database models, API routes, authentication system, admin dashboard, reusable components, animations, and all pages. The final result should be an award-winning portfolio website with a fully editable CMS-like admin panel where all content can be managed from the dashboard without modifying code.
+
+---
+
