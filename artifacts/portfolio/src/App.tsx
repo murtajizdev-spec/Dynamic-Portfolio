@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
+import AdminGuard from "@/components/AdminGuard";
 import Home from "@/pages/Home";
 import Projects from "@/pages/Projects";
 import Blog from "@/pages/Blog";
@@ -44,19 +45,43 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/services" component={Services} />
 
-      {/* Admin */}
-      <Route path="/admin" component={AdminDashboard} />
-      <Route path="/admin/hero" component={AdminHero} />
-      <Route path="/admin/about" component={AdminAbout} />
-      <Route path="/admin/skills" component={AdminSkills} />
-      <Route path="/admin/projects" component={AdminProjects} />
-      <Route path="/admin/services" component={AdminServices} />
-      <Route path="/admin/experience" component={AdminExperience} />
-      <Route path="/admin/education" component={AdminEducation} />
-      <Route path="/admin/testimonials" component={AdminTestimonials} />
-      <Route path="/admin/blog" component={AdminBlog} />
-      <Route path="/admin/messages" component={AdminMessages} />
-      <Route path="/admin/settings" component={AdminSettings} />
+      {/* Admin — all routes protected by AdminGuard */}
+      <Route path="/admin">
+        {() => <AdminGuard><AdminDashboard /></AdminGuard>}
+      </Route>
+      <Route path="/admin/hero">
+        {() => <AdminGuard><AdminHero /></AdminGuard>}
+      </Route>
+      <Route path="/admin/about">
+        {() => <AdminGuard><AdminAbout /></AdminGuard>}
+      </Route>
+      <Route path="/admin/skills">
+        {() => <AdminGuard><AdminSkills /></AdminGuard>}
+      </Route>
+      <Route path="/admin/projects">
+        {() => <AdminGuard><AdminProjects /></AdminGuard>}
+      </Route>
+      <Route path="/admin/services">
+        {() => <AdminGuard><AdminServices /></AdminGuard>}
+      </Route>
+      <Route path="/admin/experience">
+        {() => <AdminGuard><AdminExperience /></AdminGuard>}
+      </Route>
+      <Route path="/admin/education">
+        {() => <AdminGuard><AdminEducation /></AdminGuard>}
+      </Route>
+      <Route path="/admin/testimonials">
+        {() => <AdminGuard><AdminTestimonials /></AdminGuard>}
+      </Route>
+      <Route path="/admin/blog">
+        {() => <AdminGuard><AdminBlog /></AdminGuard>}
+      </Route>
+      <Route path="/admin/messages">
+        {() => <AdminGuard><AdminMessages /></AdminGuard>}
+      </Route>
+      <Route path="/admin/settings">
+        {() => <AdminGuard><AdminSettings /></AdminGuard>}
+      </Route>
 
       <Route component={NotFound} />
     </Switch>
