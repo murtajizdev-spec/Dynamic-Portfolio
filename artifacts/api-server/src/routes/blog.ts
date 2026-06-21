@@ -5,6 +5,12 @@ import { eq, and, desc } from "drizzle-orm";
 
 const router = Router();
 
+function sanitize(body: Record<string, unknown>) {
+  const { id, updatedAt, createdAt, ...rest } = body;
+  void id; void updatedAt; void createdAt;
+  return rest;
+}
+
 router.get("/", async (req, res) => {
   try {
     const { category, featured } = req.query;
@@ -23,7 +29,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const inserted = await db.insert(blogPostsTable).values(req.body).returning();
+    const data = sanitize(req.body);
+    const inserted = await db.insert(blogPostsTable).values(data as never).returning();
     return res.status(201).json(inserted[0]);
   } catch (err) {
     req.log.error({ err }, "Failed to create blog post");
@@ -46,7 +53,8 @@ router.get("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const updated = await db.update(blogPostsTable).set(req.body).where(eq(blogPostsTable.id, id)).returning();
+    const data = sanitize(req.body);
+    const updated = await db.update(blogPostsTable).set(data).where(eq(blogPostsTable.id, id)).returning();
     if (!updated.length) return res.status(404).json({ error: "Not found" });
     return res.json(updated[0]);
   } catch (err) {

@@ -5,6 +5,12 @@ import { eq, asc } from "drizzle-orm";
 
 const router = Router();
 
+function sanitize(body: Record<string, unknown>) {
+  const { id, updatedAt, createdAt, ...rest } = body;
+  void id; void updatedAt; void createdAt;
+  return rest;
+}
+
 router.get("/", async (req, res) => {
   try {
     const rows = await db.select().from(servicesTable).orderBy(asc(servicesTable.sortOrder), asc(servicesTable.id));
@@ -17,7 +23,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const inserted = await db.insert(servicesTable).values(req.body).returning();
+    const data = sanitize(req.body);
+    const inserted = await db.insert(servicesTable).values(data as never).returning();
     return res.status(201).json(inserted[0]);
   } catch (err) {
     req.log.error({ err }, "Failed to create service");
@@ -28,7 +35,8 @@ router.post("/", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const updated = await db.update(servicesTable).set(req.body).where(eq(servicesTable.id, id)).returning();
+    const data = sanitize(req.body);
+    const updated = await db.update(servicesTable).set(data).where(eq(servicesTable.id, id)).returning();
     if (!updated.length) return res.status(404).json({ error: "Not found" });
     return res.json(updated[0]);
   } catch (err) {

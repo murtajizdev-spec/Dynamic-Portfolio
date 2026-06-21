@@ -5,6 +5,12 @@ import { eq } from "drizzle-orm";
 
 const router = Router();
 
+function sanitize(body: Record<string, unknown>) {
+  const { id, updatedAt, createdAt, ...rest } = body;
+  void id; void updatedAt; void createdAt;
+  return rest;
+}
+
 router.get("/", async (req, res) => {
   try {
     const rows = await db.select().from(heroTable).limit(1);
@@ -30,12 +36,13 @@ router.get("/", async (req, res) => {
 
 router.put("/", async (req, res) => {
   try {
+    const data = sanitize(req.body);
     const rows = await db.select().from(heroTable).limit(1);
     if (rows.length === 0) {
-      const inserted = await db.insert(heroTable).values(req.body).returning();
+      const inserted = await db.insert(heroTable).values(data as never).returning();
       return res.json(inserted[0]);
     }
-    const updated = await db.update(heroTable).set(req.body).where(eq(heroTable.id, rows[0].id)).returning();
+    const updated = await db.update(heroTable).set(data).where(eq(heroTable.id, rows[0].id)).returning();
     return res.json(updated[0]);
   } catch (err) {
     req.log.error({ err }, "Failed to update hero");
