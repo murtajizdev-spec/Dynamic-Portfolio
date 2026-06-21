@@ -1,0 +1,14 @@
+{
+  "buildCommand": "pnpm install && pnpm --filter @workspace/portfolio run build",
+  "outputDirectory": "artifacts/portfolio/dist/public",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/index.ts": {
+      "memory": 512,
+      "maxDuration": 30
+    }
+  }
+}

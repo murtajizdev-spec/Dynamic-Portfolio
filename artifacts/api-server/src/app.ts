@@ -1,10 +1,14 @@
-import express, { type Express, type Request, type Response, type NextFunction } from "express";
+import express, { type Express } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import router from "./routes";
 import { logger } from "./lib/logger";
+import { pool } from "@workspace/db";
 import "./session.d";
+
+const PgStore = connectPgSimple(session);
 
 const app: Express = express();
 
@@ -28,18 +32,24 @@ app.use(
   }),
 );
 
+const isProduction = process.env.NODE_ENV === "production";
+
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
+    store: isProduction
+      ? new PgStore({ pool, createTableIfMissing: true })
+      : undefined,
     secret: process.env["SESSION_SECRET"] ?? "fallback-dev-secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: isProduction,
+      sameSite: isProduction ? "none" : "lax",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   }),
