@@ -1,5 +1,5 @@
 {
-  "buildCommand": "bash vercel-build.sh",
+  "buildCommand": "pnpm --filter @workspace/portfolio exec vite build --config vite.config.ts --outDir $(pwd)/vercel-dist --emptyOutDir",
   "outputDirectory": "vercel-dist",
   "framework": null,
   "rewrites": [
