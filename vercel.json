@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @workspace/portfolio run build",
-  "outputDirectory": "artifacts/portfolio/dist",
+  "buildCommand": "bash vercel-build.sh",
+  "outputDirectory": "vercel-dist",
   "framework": null,
   "rewrites": [
     { "source": "/((?!assets/).*)", "destination": "/index.html" }
