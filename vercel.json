@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm --filter @workspace/portfolio run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "artifacts/portfolio/dist",
   "framework": null,
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index" },
