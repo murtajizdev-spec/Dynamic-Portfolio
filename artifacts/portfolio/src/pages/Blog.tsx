@@ -7,11 +7,12 @@ import { ArrowLeft, Clock, Tag } from "lucide-react";
 export default function Blog() {
   const { data: posts } = useListBlogPosts();
   const published = posts?.filter((p) => p.published);
+  const publishedArray = Array.isArray(published) ? published : [];
   const [filter, setFilter] = useState("All");
 
-  const categories = ["All", ...Array.from(new Set(published?.map((p) => p.category).filter(Boolean) || []))];
-  const filtered = filter === "All" ? published : published?.filter((p) => p.category === filter);
-  const featured = published?.find((p) => p.featured);
+  const categories = ["All", ...Array.from(new Set(publishedArray.map((p) => p.category).filter(Boolean)))];
+  const filtered = filter === "All" ? publishedArray : publishedArray.filter((p) => p.category === filter);
+  const featured = publishedArray.find((p) => p.featured);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -67,7 +68,7 @@ export default function Blog() {
 
         {/* Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered?.filter((p) => p.id !== featured?.id).map((post, i) => (
+          {filtered.filter((p) => p.id !== featured?.id).map((post, i) => (
             <Link key={post.id} href={`/blog/${post.slug}`}>
               <motion.article
                 initial={{ opacity: 0, y: 30 }}
@@ -85,7 +86,7 @@ export default function Blog() {
                 <p className="text-muted-foreground text-sm mt-2 leading-relaxed line-clamp-3">{post.excerpt}</p>
                 {(post.tags || []).length > 0 && (
                   <div className="flex gap-1.5 flex-wrap mt-4">
-                    {post.tags?.slice(0, 3).map((tag) => (
+                    {(post.tags ?? []).slice(0, 3).map((tag) => (
                       <span key={tag} className="text-xs font-mono text-muted-foreground/60 flex items-center gap-1"><Tag className="w-2.5 h-2.5" />{tag}</span>
                     ))}
                   </div>
@@ -99,7 +100,7 @@ export default function Blog() {
           ))}
         </div>
 
-        {(!published || published.length === 0) && (
+        {publishedArray.length === 0 && (
           <div className="text-center py-20 text-muted-foreground">
             <p className="font-mono text-sm uppercase tracking-widest">No posts published yet</p>
           </div>

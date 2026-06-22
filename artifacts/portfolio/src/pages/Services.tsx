@@ -14,6 +14,8 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
 export default function Services() {
   const { data: services } = useListServices();
   const { data: testimonials } = useListTestimonials();
+  const servicesArray = Array.isArray(services) ? services : [];
+  const testimonialsArray = Array.isArray(testimonials) ? testimonials : [];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -37,7 +39,7 @@ export default function Services() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          {services?.map((service, i) => (
+          {servicesArray.map((service, i) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
@@ -84,13 +86,13 @@ export default function Services() {
         </motion.div>
 
         {/* Testimonials */}
-        {testimonials && testimonials.length > 0 && (
+        {testimonialsArray.length > 0 && (
           <div className="mt-24">
             <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-12">
               What Clients<br /><span className="text-primary">Say_</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {testimonials.map((t, i) => (
+              {testimonialsArray.map((t, i) => (
                 <motion.div
                   key={t.id}
                   initial={{ opacity: 0, y: 20 }}

@@ -7,9 +7,10 @@ import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 export default function Projects() {
   const { data: projects } = useListProjects();
   const [filter, setFilter] = useState("All");
+  const projectsArray = Array.isArray(projects) ? projects : [];
 
-  const categories = ["All", ...Array.from(new Set(projects?.map((p) => p.category) || []))];
-  const filtered = filter === "All" ? projects : projects?.filter((p) => p.category === filter);
+  const categories = ["All", ...Array.from(new Set(projectsArray.map((p) => p.category).filter(Boolean)))];
+  const filtered = filter === "All" ? projectsArray : projectsArray.filter((p) => p.category === filter);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -44,7 +45,7 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered?.map((project, i) => (
+          {filtered.map((project, i) => (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
@@ -67,7 +68,7 @@ export default function Projects() {
 
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex gap-1.5 flex-wrap mb-3">
-                  {project.technologies?.slice(0, 4).map((tech) => (
+                  {(project.technologies ?? []).slice(0, 4).map((tech) => (
                     <span key={tech} className="text-xs font-mono text-primary/60 border border-primary/20 px-2 py-0.5">{tech}</span>
                   ))}
                 </div>

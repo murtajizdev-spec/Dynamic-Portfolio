@@ -70,7 +70,7 @@ export default function BlogPost() {
             {(post.tags || []).length > 0 && (
               <div className="flex items-center gap-1.5 flex-wrap ml-auto">
                 <Tag className="w-3.5 h-3.5" />
-                {post.tags?.map((tag) => (
+                {(post.tags ?? []).map((tag) => (
                   <span key={tag} className="text-primary/70">{tag}</span>
                 ))}
               </div>

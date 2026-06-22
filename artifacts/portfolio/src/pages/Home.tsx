@@ -69,6 +69,12 @@ export default function Home() {
   const { data: education } = useListEducation();
   const { data: services } = useListServices();
   const webGLSupported = useWebGLSupport();
+  const skillsArray = Array.isArray(skills) ? skills : [];
+  const projectsArray = Array.isArray(projects) ? projects : [];
+  const experienceArray = Array.isArray(experience) ? experience : [];
+  const testimonialsArray = Array.isArray(testimonials) ? testimonials : [];
+  const educationArray = Array.isArray(education) ? education : [];
+  const servicesArray = Array.isArray(services) ? services : [];
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -198,7 +204,7 @@ export default function Home() {
             Tech<br /><span className="text-primary">Stack_</span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {skills?.map((skill, i) => (
+            {skillsArray.map((skill, i) => (
               <motion.div
                 key={skill.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -237,7 +243,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects?.slice(0, 4).map((project, i) => (
+            {projectsArray.slice(0, 4).map((project, i) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -266,7 +272,7 @@ export default function Home() {
                   )}
                 </div>
                 <div className="flex gap-2 flex-wrap mb-2">
-                  {project.technologies?.slice(0, 3).map((tech) => (
+                  {(project.technologies ?? []).slice(0, 3).map((tech) => (
                     <span key={tech} className="text-xs font-mono text-primary/70 border border-primary/20 px-2 py-0.5">{tech}</span>
                   ))}
                 </div>
@@ -279,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* ── Services ── */}
-      {services && services.length > 0 && (
+      {servicesArray.length > 0 && (
         <section id="services" className="py-24 px-8 md:px-24 bg-background">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-end mb-16">
@@ -292,7 +298,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map((service, i) => {
+              {servicesArray.map((service, i) => {
                 const Icon = SERVICE_ICONS[service.icon || ""] || Code2;
                 return (
                   <motion.div
@@ -341,7 +347,7 @@ export default function Home() {
               Work<br /><span className="text-primary">History_</span>
             </h2>
             <div className="space-y-12 border-l border-white/10 pl-8">
-              {experience.map((exp, i) => (
+              {experienceArray.map((exp, i) => (
                 <motion.div
                   key={exp.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -372,7 +378,7 @@ export default function Home() {
               Edu<br /><span className="text-primary">cation_</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {education.map((edu, i) => (
+              {educationArray.map((edu, i) => (
                 <motion.div
                   key={edu.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -403,14 +409,14 @@ export default function Home() {
       )}
 
       {/* ── Testimonials ── */}
-      {testimonials && testimonials.length > 0 && (
+      {testimonialsArray.length > 0 && (
         <section className="py-24 px-8 md:px-24 bg-card/20">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter uppercase mb-16">
               Client<br /><span className="text-primary">Words_</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {testimonials.map((t, i) => (
+              {testimonialsArray.map((t, i) => (
                 <motion.div
                   key={t.id}
                   initial={{ opacity: 0, y: 30 }}
