@@ -3,13 +3,6 @@
   "outputDirectory": "artifacts/portfolio/dist",
   "framework": null,
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
-  ],
-  "functions": {
-    "api/index.ts": {
-      "memory": 512,
-      "maxDuration": 30
-    }
-  }
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ]
 }
